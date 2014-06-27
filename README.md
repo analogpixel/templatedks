@@ -1,4 +1,4 @@
-=Kickstart Template Builder (KTB)
+#Kickstart Template Builder (KTB)
 
 KTB is a templating system written in php use to deploy consistent kickstart
 images using a base kickstart image with variables that can change based
@@ -11,11 +11,11 @@ variable based on the input to the script.
 For example, you could have SITEA for RHEL 5 Given back one OPTION
 for a KEY in the file, and SITEA for RHEL 6 give back a different key.
 
-=Calling the script
+#Calling the script
 you pass one http get variable to the script, build, which is a CSV list
 of GROUP,SITE,MAJOR,MINOR,ARCH ; and it will output a kickstart file.   
 
-=File Layout
+#File Layout
 fragments: this file holds all the key/value pairs that control how
 the templates are filled out.
 
@@ -43,7 +43,7 @@ templates/:  This directory holds the kickstart template files. templates
 are chosen from the KSTEMPLATE key within the fragments file.
 
 
-=Sample Usage
+#Sample Usage
 
 * to add a package to the 64 bit RHEL5.9 build you would edit:
 fragmentData/packageList.rhel5.full.x8664  and add the package to the list
