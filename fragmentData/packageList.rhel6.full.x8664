@@ -1,0 +1,88 @@
+%packages
+@Base
+@Networking Tools
+@Network file system client
+@Performance Tools
+@SNMP Support
+@Server Platform
+@Development tools
+@System administration tools
+@KDE Desktop
+@Desktop
+
+pe-agent
+autofs
+compat-expat1.i686
+compat-expat1.x86_64
+compat*i686
+compat-libstdc++-296.i686
+compat-libstdc++-33.i686
+compat-libtermcap.i686
+compat-libtermcap.x86_64
+compat*x86_64
+crypto-utils
+dialog*
+dos2unix
+e2fsprogs-devel.i686
+e2fsprogs-devel.x86_64
+enscript
+fontconfig-devel.i686
+freetype-devel.i686
+freetype-devel.x86_64
+freetype.i686
+fuse
+fuse-libs
+gdm
+glib2-devel.i686
+glibc.i686
+glibc-devel.i686
+glibc-devel.x86_64
+glibc-utils
+gnuplot
+ImageMagick
+kdesdk
+libgcc.i686
+libSM.i686
+libSM.x86_64
+libstdc++.i686
+libstdc++.x86_64
+libuuid.i686
+libuuid.x86_64
+libwmf
+libXcursor-devel.i686
+libXft-devel.i686
+libXft.i686
+libXi-devel.i686
+libXi-devel.x86_64
+libXrandr-devel.i686
+libXrandr-devel.x86_64
+libXrender-devel.x86_64
+libXrender-devel.i686
+libXrender.i686
+mesa-libGL-devel.i686
+-mrtg*
+ncurses-libs.i686
+nss-pam-ldapd
+nss-pam-ldapd.i686
+nss-softokn-freebl.i686
+openldap*
+openmotif22.i686
+openmotif22.x86_64
+openmotif-devel.i686
+openmotif-devel.x86_64
+perl*
+php-*
+postfix*
+python-ldap
+rsh-server
+ruby*
+-sudo*
+tcl-devel.i686
+tcl-devel.x86_64
+thunderbird
+transfig
+vim-enhanced
+xfig
+yp-tools
+zlib-devel.i686
+zlib-devel.x86_64

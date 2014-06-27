@@ -1,0 +1,48 @@
+lang ##LANGS##
+keyboard ##KEYBOARD##
+timezone ##TIMEZONE##
+rootpw ##ROOTPASSWORD##
+reboot
+key ##RHKEY##
+text
+install
+url --url http://##YUMREPOSERVER##/rhel##MAJOR##.##MINOR##.##ARCH##
+repo --name rhel##MAJOR##.updates.##UPDATEREPOVERSION## --baseurl=http://##YUMREPOSERVER##/rhel##MAJOR##.updates.##UPDATEREPOVERSION##.##ARCH##
+repo --name puppetEnt --baseurl=http://##YUMREPOSERVER##/pe-repos/##MAJOR##.##UNDERARCH##
+
+bootloader --location=mbr
+zerombr yes
+clearpart --all --initlabel
+
+##PARTITION##
+
+network  --bootproto dhcp --noipv6
+
+##SYSTEMAUTH##
+
+firewall --enabled --ssh --trust=eth0
+selinux --permissive
+skipx
+services --enabled ypbind,autofs
+
+##PACKAGES##
+
+%post
+touch /etc/kickstarted
+ntpdate ntp1
+
+# sed -i "s/5:initdefault/3:initdefault/" /etc/inittab
+cat /boot/grub/grub.conf | sed "s/rhgb quiet//g" > /tmp/t
+mv /tmp/t /boot/grub/grub.conf
+chmod 600 /boot/grub/grub.conf
+
+chkconfig pe-puppet off 
+chkconfig NetworkManager off
+
+/opt/puppet/bin/puppet config set --section agent server ##PUPPETSERVER##
+/opt/puppet/bin/puppet config set --section agent ca_server ##PUPPETCASERVER##
+/opt/puppet/bin/puppet config set --section main runinterval 6h
+/opt/puppet/bin/puppet config set --section main splay true
+/opt/puppet/bin/puppet config set --section main splaylimit 30m
+
+yum update

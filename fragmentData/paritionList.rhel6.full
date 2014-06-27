@@ -1,0 +1,8 @@
+part /boot --fstype="ext4" --size=512
+
+part pv.01 --size=1 --grow
+volgroup vg00 pv.01
+#logvol  /var  --vgname=vg00  --size=4096   --name=varlv
+#logvol  /tmp  --vgname=vg00  --size=2048   --name=tmplv
+logvol  swap  --vgname=vg00  --recommended --name=swaplv
+logvol  /     --vgname=vg00  --size=1      --name=rootlv --grow

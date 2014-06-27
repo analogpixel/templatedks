@@ -1,0 +1,48 @@
+%packages
+@Base
+@Networking Tools
+@Network file system client
+@Performance Tools
+@SNMP Support
+@Server Platform
+@Development tools
+@System administration tools
+-sudo*
+-mrtg*
+postfix*
+dialog*
+autofs
+yp-tools
+openldap*
+nss-pam-ldapd
+python-ldap
+
+# packages for Software
+pe-agent
+compat-libtermcap-2.0.8-49.el6.i686
+glibc-devel-2.12-1.107.el6.i686
+glibc-2.12-1.107.el6.i686
+ncurses-libs-5.7-3.20090208.el6.i686
+compat-libstdc++-33-3.2.3-69.el6.i686
+nss-softokn-freebl-3.12.9-11.el6.i686
+libgcc-4.4.7-3.el6.i686
+compat-expat1.i686
+compat-libstdc++-296-2.96-144.el6.i686
+libstdc++.i686
+libuuid.i686
+libSM.i686
+zlib-devel.i686
+libXrender.i686
+glib2-devel.i686
+libXi-devel.i686
+libXrandr-devel.i686
+freetype-devel.i686
+fontconfig-devel.i686
+libXcursor-devel.i686
+libXft-devel.i686
+openmotif-devel.i686
+openmotif22-2.2.3-19.el6.i686
+mesa-libGL-devel.i686
+tcl-devel.i686
+dos2unix
+nss-pam-ldapd.i686

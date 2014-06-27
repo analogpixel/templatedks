@@ -1,0 +1,73 @@
+#
+# Fragment Definitions
+# 
+# fragments are part of the kickstart file, each line is broken out into a fragment
+# fragments are selected based on variables passed on the parser, these variables are:
+# group, site, majorOSVer, minorOSver, arch
+# if a variable is set to * it will match anything, thus *,*,*,*,* will match anything for the given key
+# rules are picked from most specific, to least specific
+#
+
+# puppet server
+PUPPETSERVER|*,*,*,*| puppet
+
+# puppet ca server
+PUPPETCASERVER|*,*,*,*| puppetca
+
+
+# Yum repo that holds packages
+YUMREPOSERVER|*,*,*,*| yumserver
+
+# what is the redhat key for
+RHKEY|*,*,*,*,*| REDHATKEY
+
+# the initial root password for the machine
+ROOTPASSWORD|*,*,*,*| PASSWORD
+
+#what kickstart template to use to build the file
+KSTEMPLATE|*,*,5,*,*| templates/kstemplate.rhel5
+KSTEMPLATE|*,*,6,*,*| templates/kstemplate.rhel6
+
+# Language the machine will default to
+LANGS|*,*,*,*,*| en_US
+
+# langsupport option
+LANGSUPPORT|*,*,*,*,*| en_US
+
+# Keyboard layout the machine will use
+KEYBOARD|*,SITEE,*,*,*|  uk
+KEYBOARD|*,*,*,*,*|  us
+
+# what type of mouse to set the machine up for 
+MOUSE|*,*,*,*,*| --emulthree genericps/2
+
+# timezone settings for each site
+TIMEZONE|*,SITEA,*,*,*|  America/Denver
+TIMEZONE|*,SITEB,*,*,*|  Asia/Singapore
+TIMEZONE|*,SITEC,*,*,*|  Asia/Shanghai
+TIMEZONE|*,SITED,*,*,*|  Asia/Calcutta
+TIMEZONE|*,SITEE,*,*,*|  Europe/Dublin
+TIMEZONE|*,SITEF,*,*,*|  America/Los_Angeles
+
+#system auth configuration section
+SYSTEMAUTH|*,*,6,*,*| auth  --useshadow  --enablemd5 --enablenis --nisdomain=company.com
+SYSTEMAUTH|*,SITEA,5,*,*| auth  --useshadow  --enablemd5 --enablenis --nisdomain=nisdomain=company.com --nisserver=myip
+SYSTEMAUTH|*,SITEC,5,*,*| auth  --useshadow  --enablemd5 --enablenis --nisdomain=nisdomain=company.com --nisserver=myip
+SYSTEMAUTH|*,SITEB,5,*,*| auth  --useshadow  --enablemd5 --enablenis --nisdomain=nisdomain=company.com --nisserver=myip
+SYSTEMAUTH|*,SITEE,5,*,*| auth  --useshadow  --enablemd5 --enablenis --nisdomain=nisdomain=company.com --nisserver=myip
+SYSTEMAUTH|*,SITEE,5,*,*| auth  --useshadow  --enablemd5 --enablenis --nisdomain=nisdomain=company.com --nisserver=myip
+SYSTEMAUTH|*,SITEF,5,*,*| auth  --useshadow  --enablemd5 --enablenis --nisdomain=nisdomain=company.com --nisserver=myip
+
+# list of packages to load
+PACKAGES|*,*,5,*,x8664| @fragmentData/packageList.rhel5.full.x8664
+PACKAGES|*,*,5,*,i686| @fragmentData/packageList.rhel5.full.i686
+PACKAGES|*,*,6,*,x8664| @fragmentData/packageList.rhel6.full.x8664
+PACKAGES|*,*,6,*,i686| @fragmentData/packageList.rhel6.full.i686
+
+# setup the partion table
+PARTITION|*,*,5,*,*| @fragmentData/paritionList.rhel5.full
+PARTITION|*,*,6,*,*| @fragmentData/paritionList.rhel6.full
+
+UPDATEREPOVERSION|*,*,6,4,*,*| 1
+UPDATEREPOVERSION|*,*,6,*,*,*| 2
+UPDATEREPOVERSION|*,*,5,*,*,*| 2

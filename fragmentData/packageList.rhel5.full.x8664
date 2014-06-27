@@ -1,0 +1,78 @@
+%packages --resolvedeps
+@Base
+@Development tools
+@Administration Tools
+@System Tools
+@Text-based Internet
+
+# desktop stuff
+@GNOME Desktop Environment
+@KDE (K Desktop Environment)
+@X Software Development
+@X Window System
+@Graphical Internet
+gdm
+firefox
+evolution
+
+# misc stuff
+pe-agent
+-sudo*
+-mrtg*
+postfix*
+dialog*
+autofs
+yp-tools
+enscript
+gnuplot
+vim-enhanced
+thunderbird
+openoffice.org*
+ruby-tcltk
+cairo-java
+glib-java
+ImageMagick
+kdebindings
+kdesdk
+libgtk-java
+libwmf
+perl*
+switchdesk
+transfig
+xfig
+rsh-server
+crypto-utils
+glibc-utils
+ruby*
+fuse
+fuse-libs
+
+
+# tools needed by eng
+compat*i386
+compat*x86_64
+libXi-devel.x86_64 
+libXi-devel.i386
+libXrender-devel.i386 
+libXrender-devel.x86_64
+libXrandr-devel.x86_64 
+libXrandr-devel.i386
+freetype.i386 
+fontconfig-devel.i386
+freetype-devel.i386 
+freetype-devel.x86_64
+libXcursor-devel.i386
+libXft.i386
+openmotif-devel.i386
+openmotif-devel.x86_64
+openmotif22.i386
+openmotif22.x86_64
+glibc-devel.i386
+glibc-devel.x86_64
+e2fsprogs-devel.i386
+e2fsprogs-devel.x86_64
+
+# lamp packages
+# @Web Server
+# @MySQL Database
+php-*

@@ -1,0 +1,52 @@
+lang ##LANGS##
+langsupport ##LANGSUPPORT##
+keyboard ##KEYBOARD##
+mouse ##MOUSE##
+timezone ##TIMEZONE##
+rootpw ##ROOTPASSWORD##
+selinux --permissive
+key ##RHKEY##
+reboot
+text
+install
+url --url http://##YUMREPOSERVER##/rhel##MAJOR##.##MINOR##.##ARCH##
+repo --name rhel##MAJOR##.updates.##UPDATEREPOVERSION## --baseurl=http://##YUMREPOSERVER##/rhel##MAJOR##.updates.##UPDATEREPOVERSION##.##ARCH##
+repo --name puppetEnt --baseurl=http://##YUMREPOSERVER##/pe-repos/##MAJOR##.##UNDERARCH##
+
+bootloader --location=mbr
+zerombr yes
+clearpart --all --initlabel
+
+#Disk partitioning information
+##PARTITION##
+
+network --device eth0  --bootproto dhcp
+
+##SYSTEMAUTH##
+
+firewall --enabled --ssh --trust=eth0
+
+##PACKAGES##
+
+%pre
+#!/bin/sh
+mem=`awk '/MemTotal/{print int(($2/1024) * 2)}' /proc/meminfo ` 
+if [ "$mem" -gt 32000 ] ; then
+mem=32000
+fi
+echo "logvol swap --vgname=vg00 --name=swaplv --size=$mem" > /tmp/swaptmp 
+
+%post
+touch /etc/kickstarted
+
+yum update
+chkconfig avahi-daemon off
+chkconfig avahi-dnsconfd   off
+chkconfig pe-puppet off
+
+/opt/puppet/bin/puppet config set --section agent server ##PUPPETSERVER##
+/opt/puppet/bin/puppet config set --section agent ca_server ##PUPPETCASERVER##
+/opt/puppet/bin/puppet config set --section main runinterval 6h
+/opt/puppet/bin/puppet config set --section main splay true
+/opt/puppet/bin/puppet config set --section main splaylimit 30m
+
