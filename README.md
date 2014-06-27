@@ -19,6 +19,7 @@ of GROUP,SITE,MAJOR,MINOR,ARCH ; and it will output a kickstart file.
 fragments: this file holds all the key/value pairs that control how
 the templates are filled out.
 
+```
 fragments entries are defined as: KEY|GROUP,SITE,MAJOR,MINOR,ARCH|Value
 where:
     KEY   = is the lookup key you place in the template between ##KEY##
@@ -28,6 +29,7 @@ where:
     MINOR = the minor version of the OS
     ARCH  = the arch (x8664 or i686) for the OS
     VALUE = the value to return for the key, @name  would load the file name.
+```
 
 GROUP,SITE,MAJOR,MINOR, and ARCH can all be replace with * which means
 that any value would work there.  If you have a key that matches
